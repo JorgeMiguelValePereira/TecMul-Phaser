@@ -1,0 +1,22 @@
+# Ficheiros do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ficheiros temporários/backup
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ficheiros e pastas de editores
+.vscode/
+.idea/
+*.code-workspace
+
+# Pastas comuns de ferramentas futuras
+node_modules/
+dist/
+build/
+.env
