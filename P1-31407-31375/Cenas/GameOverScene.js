@@ -11,23 +11,26 @@ class GameOverScene extends Phaser.Scene {
     // Fundo da cena
     this.add.image(0, 0, 'meio_fundo').setOrigin(0).setDisplaySize(600, 600);
 
-    this.add.text(150, 150, 'Nível Concluído!', {
+    // Título centralizado e com contorno para legibilidade
+    this.add.text(300, 150, 'Nível Concluído!', {
       fontSize: '32px',
-      color: '#000000',
-      fontFamily: 'Arial'
-    });
+      fill: '#ffffff',
+      fontFamily: 'Arial',
+      stroke: '#000000',
+      strokeThickness: 4,
+    }).setOrigin(0.5);
 
     const nivelAtual = (data.proximoNivel || 1) - 1;
 
     // Botão: Próximo Nível (se existir)
     if (data.proximoNivel < 3) {
-      const btnProximo = this.add.text(150, 250, '➡ Próximo Nível', {
+      const btnProximo = this.add.text(300, 250, '➡ Próximo Nível', {
         fontSize: '24px',
         color: '#000000',
         backgroundColor: '#c0ffc0',
         padding: { x: 10, y: 5 },
         fontFamily: 'Arial'
-      }).setInteractive();
+      }).setOrigin(0.5).setInteractive();
 
       btnProximo.on('pointerdown', () => {
         this.scene.start('GameScene', { nivelIndex: data.proximoNivel });
@@ -35,13 +38,13 @@ class GameOverScene extends Phaser.Scene {
     }
 
     // Botão: Repetir Nível
-    const btnRepetir = this.add.text(150, 320, '🔁 Repetir Nível', {
+    const btnRepetir = this.add.text(300, 320, '🔁 Repetir Nível', {
       fontSize: '24px',
       color: '#000000',
       backgroundColor: '#ffff99',
       padding: { x: 10, y: 5 },
       fontFamily: 'Arial'
-    }).setInteractive();
+    }).setOrigin(0.5).setInteractive();
 
     btnRepetir.on('pointerdown', () => {
       this.scene.start('GameScene', { nivelIndex: nivelAtual });
@@ -49,13 +52,13 @@ class GameOverScene extends Phaser.Scene {
 
     // Botão: Nível Anterior
     if (nivelAtual > 0) {
-      const btnAnterior = this.add.text(150, 390, '⬅ Nível Anterior', {
+      const btnAnterior = this.add.text(300, 390, '⬅ Nível Anterior', {
         fontSize: '24px',
         color: '#000000',
         backgroundColor: '#ffcccc',
         padding: { x: 10, y: 5 },
         fontFamily: 'Arial'
-      }).setInteractive();
+      }).setOrigin(0.5).setInteractive();
 
       btnAnterior.on('pointerdown', () => {
         this.scene.start('GameScene', { nivelIndex: nivelAtual - 1 });
@@ -64,13 +67,13 @@ class GameOverScene extends Phaser.Scene {
 
     // Botão: Finalizar Jogo (apenas no último nível)
     if (nivelAtual >= 2) {
-      const btnFinalizar = this.add.text(150, 460, '🏁 Finalizar Jogo', {
+      const btnFinalizar = this.add.text(300, 460, '🏁 Finalizar Jogo', {
         fontSize: '24px',
         color: '#ffffff',
         backgroundColor: '#333333',
         padding: { x: 10, y: 5 },
         fontFamily: 'Arial'
-      }).setInteractive();
+      }).setOrigin(0.5).setInteractive();
 
       btnFinalizar.on('pointerdown', () => {
         this.scene.start('MenuScene');
